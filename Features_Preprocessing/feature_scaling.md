@@ -1,0 +1,22 @@
+With few exceptions, Machine Learning algorithms don’t perform well when the input numerical attributes have very different scales.
+There are two common ways to get all attributes to have the same scale: min-max scaling(scaling) and standardization.
+
+**Min max scaling**: For each attribute, the values are shifted and rescaled so that they end up ranging from 0 to 1. This is performed by subtracting the min value and dividing by the difference between the min and the max. (see sklearn.MinMaxScaler. It has a feature_range hyperparameter that lets you change the range if, for some reason, you don’t want 0–1 (e.g., **neural networks work best with zero-mean inputs, so a range of –1 to 1 is preferable**). Note that while the training set values will always be scaled to the specified range, if new data contains outliers, these may end up scaled outside the range. If you want to avoid this, just set the clip hyperparameter to True)
+
+Standardization: It first subtracts the mean value **(so standardized values have a zero mean)**, then it divides the result by the standard deviation **(so standardized values have a zero mean and a standard deviation equal to 1)**. Unlike min-max scaling, standardization does not bound values to a specific range. However, standardization is much less affected by outliers.
+
+### Handling heavy tailed distributions
+- When a feature’s distribution has a heavy tail (i.e., when values far from the mean are not exponentially rare), both min-max scaling and standardization will squash most values into a small range. Machine Learning models generally don’t like this at all,So before you scale the feature, you should first transform it to shrink the heavy tail, and if possible to make the distribution roughly symmetrical. For example, a common way to do this for positive features with a heavy tail to the right is to replace the feature with its square root (or raise the feature to a power between 0 and 1). If the feature has a really long and heavy tail, such as a power law distribution , then replacing the feature with its logarithm may help.
+
+- Another approach to handle heavy tailed features consists in bucketizing the feature. This means chopping its distribution into roughly equal size buckets, and replacing each feature value with the index of the bucket it belongs to, much like we did to create the income_cat feature (although we only used it for stratified sampling). For example, you could replace each value with its percentile. Bucketizing with equal-sized buckets results in a feature with an almost uniform distribution, so there’s no need for further scaling, or you can just divide by the number of buckets to force the values to the 0–1 range.
+
+### Handling multimodal distributions
+- When a feature has a multimodal distribution (i.e., with two or more clear peaks, called modes ), such as the housing_median_age feature, it can also be helpful to bucketize it, but this time treating the bucket ids as categories, rather than as numerical values. This means that the bucket indices must be encoded, for example using a OneHotEncoder (so you usually don’t want to use too many buckets). This approach will allow the regression model to more easily learn different rules for different ranges of this feature value. For example, perhaps houses built around 35 years ago have a peculiar style that fell out of fashion, and therefore they’re cheaper than their age alone would suggest.
+ 
+- Another approach for transforming multimodal distributions is to add a feature for each of the modes (at least the main ones), representing the similarity between the housing median age and that particular mode. The similarity measure is typically computed using a Radial Basis Function (RBF): this is any function which depends only on the distance between the input value and a fixed point. The most commonly used RBF is the Gaussian RBF whose output value decays exponentially as the input value moves away from the fixed point. 
+ 
+### Scaling target attributes 
+The target values may also need to be transformed. For example, if the target distribution has a heavy tail, you may choose to replace the target with its logarithm. But if you do, the regression model will now predict the log of the median house value, not the median house value itself. So you will need to compute the exponential of the model’s prediction if you want the predicted median house value.
+
+ 
+
