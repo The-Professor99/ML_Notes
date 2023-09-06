@@ -1,0 +1,7 @@
+State Space Models: These models represent the underlying hidden states of the system that generate observed data. Kalman and particle filters are commonly used in this context. At its core, it consists of 2 main components:
+1. State Equation: This equation describes how the underlying "state" of the system evolves over time. The state represents the unobservable or hidden factors that generate the observed data. It captures the dynamics and interactions of the system.
+2. Observation Equation: This equation links the observed data to the underlying state. It describes how the state produces the observable measurements we can actually observe.
+
+** To be Continued...
+
+
