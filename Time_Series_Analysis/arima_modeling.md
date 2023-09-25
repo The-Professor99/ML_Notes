@@ -36,3 +36,10 @@ Where
 - $y_t$ is the time series' value at time step t.
 - The First sum in the equation is the weighted sum of the past p values of the time series, using the learned weights $\alpha_i$. The number p is a hyperparameter, and it determines how far back into the past the model should look. This sum is the AutoRegressive component of the model: it performs regression based on past values.
 - The second sum is the weighted sum over the past q forecast errors $\epsilon_t$, using the learned weights $\theta_i$. The number q is a hyperparameter which determines how far back into the past the model should look when summing forecast errors using the learned weights. This sum is the moving average component of the model.
+
+#### Endogenous Features
+Endogenous variables are primary variables of interest in the time series analysis, they are the variables we want to predict or model. Eg, if you are building a time series forecasting model for daily sales data, the daily sales figures would be the endogenous variable.
+
+#### Exogenous Features
+Exogenous variables are external or additional variables that are not part of the primary time series but can influence or provide additional information for the modeling process. These variables are considered external to the time series and are often used as predictors or covariates to improve the accuracy of the time series model. They can be thought of as "input" features that help the model make better predictions and may include factors such as economic indicators, weather data, holiday calendars or other relevant data sources that can impact the endogenous time series.
+
