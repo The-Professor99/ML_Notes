@@ -50,7 +50,7 @@ The cross_validate function works in the same way as cross_val_score but differs
 1. It allows specifying multiple metrics for evaluation.
 2. It returns a dict containing fit-times, score-times (and optionally training scores, fitted estimators, train-test split indices) in addition to the test score. Hence it is more versatile as it provides a wider range of information about the model's performance.
 
-The function cross_val_predict has a similar interface to cross_val_score, but returns, for each element in the input, the prediction that was obtained for that element when it was in the test set. Only cross-validation strategies that assign all elements to a test set exactly once can be used (otherwise, an exception is raised).
+The function cross_val_predict has a similar interface to cross_val_score, but returns, for each element in the input, the prediction that was obtained for that element when it was in the test set. This means we get a clean prediction for each instance in the training set ("clean" meaning that the prediction is made by a model that never saw the data during training). Only cross-validation strategies that assign all elements to a test set exactly once can be used (otherwise, an exception is raised).
 
 _* Warning Note on inappropriate usage of cross_val_predict *_
 *The result of cross_val_predict may be different from those obtained using cross_val_score as the elements are grouped in different ways. The function cross_val_score takes an average over cross-validation folds, whereas cross_val_predict simply returns the labels (or probabilities) from several distinct models undistinguished. Thus, cross_val_predict is not an appropriate measure of generalization error.*

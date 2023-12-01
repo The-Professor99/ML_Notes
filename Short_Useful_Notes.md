@@ -1,0 +1,3 @@
+Dense in the context of layers means that each entry in the embeddings contains a nonzero value. In contrast, A layer is sparse if all entries except one are zero.
+
+Zero-shot transfer or zero-shot learning usually refers to the task of training a model on one set of labels and then evaluating it on a different set of labels. In the context of transformers, zero-shot learning may also refer to situations where a language model like GPT-3 is evaluated on a downstream task that it wasn't even fine-tuned on.

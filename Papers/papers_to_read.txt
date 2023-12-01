@@ -1,1 +1,3 @@
-Lawrence, M., Goodwin, P., O’Connor, M. & Onkal, D. (2006), ‘Judgmental forecasting: a review of progress over the last 25 years’, International Journal of Forecasting 22(3), 493–518.
+1. Lawrence, M., Goodwin, P., O’Connor, M. & Onkal, D. (2006), ‘Judgmental forecasting: a review of progress over the last 25 years’, International Journal of Forecasting 22(3), 493–518.
+2. The Unreasonable Effectiveness of Recurrent Neural Networks by Andrej Karpathy blog - https://karpathy.github.io/2015/05/21/rnn-effectiveness/
+3. I. Sutskever, O. Vinyals, and Q.V. Le, “Sequence to Sequence Learning with Neural Networks”, - https://arxiv.org/abs/1409.3215
