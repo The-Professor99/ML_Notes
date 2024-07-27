@@ -44,7 +44,7 @@ More recently, new approaches to topic modelling have moved beyond using words t
 - HDBSCAN clustering - Able to handle both noisy and variable clusters, this finds dense areas of document vectors and assigns a label to each dense cluster as well as document vectors that fall in less dense spaces, making it more efficient as a clustering technique.
 - Centroid Calculation and Topic Assignment: Each cluster can now be treated as a unique topic. The n-closest words to the topic vector, which is also the cluster centroid, can be used to deduce the subject of the topic.
 
-5. BERTopic: Like Top2Vec, this also uses BERT embeddings and a [class-based TF-IDF](../General_Concepts/tf-idf.md) matrix to discover dense clusters in the document corpora. These dense clusters allow for easily interpretable topics while keeping the most important words in the topic description. Important steps of the algorithm:
+5. BERTopic: Like Top2Vec, this also uses BERT embeddings and a [class-based TF-IDF](../General_Concepts/tf_idf.md) matrix to discover dense clusters in the document corpora. These dense clusters allow for easily interpretable topics while keeping the most important words in the topic description. Important steps of the algorithm:
 - Transformer Embedding: BERTopic supports several libraries to convert text to dense vector embeddings. This text is saved as a 384-dimensional vector.
 - UMAP: UMAP reduces this 384-dimensional vector into a 2- or 3- dimensional embedding.
 - HBDSCAN Clustering: A hierarchical, density based clustering technique, this identifies and picks high density regions in the document corpora, eventually combining the data points in these regions to form topics and their clusters.
