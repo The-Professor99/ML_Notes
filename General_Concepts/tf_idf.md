@@ -37,6 +37,12 @@ $$c-TF(t, C) = {\text{Number of times term t appears in class C} \over \text{Tot
 - The c-TF-IDF score for a term t in a class C is calculated as 
 $$c-TF-IDF(t, C) = c-TF(t, C) * IDF(t)$$
 
+
+| ![c-TF-IDF formula](../general_concepts/c-TF-IDF.svg "c-TF-IDF formula") | 
+|:--:| 
+| *c-TF-IDF formula* |
+
+
 Because c-TF-IDF takes into account the distribution of terms within classes or clusters, it provides a more context aware representation.
 
 Useful Links:
